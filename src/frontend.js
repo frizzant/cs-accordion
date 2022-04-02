@@ -5,7 +5,6 @@
 import Accordion from 'accordion-js';
 
 document.addEventListener("DOMContentLoaded", function () {
-	/**
-	 * TODO: Do accordion stuff here
-	 */
+	const accordions = Array.from(document.querySelectorAll('.wp-block-cs-accordion.accordion-container'));
+	new Accordion(accordions, {});
 });
