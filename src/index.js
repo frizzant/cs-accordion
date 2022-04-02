@@ -4,6 +4,7 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 import { registerBlockType } from '@wordpress/blocks';
+import blockConfig from './block.json';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -13,6 +14,11 @@ import { registerBlockType } from '@wordpress/blocks';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './style.scss';
+
+/**
+ * Import the inner wrapper that is necessary to add accordion items with innerBlocks
+ */
+import './inner.js';
 
 /**
  * Internal dependencies
@@ -25,7 +31,7 @@ import save from './save';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType('cs-accordion/cs-accordion', {
+registerBlockType(blockConfig, {
 	/**
 	 * @see ./edit.js
 	 */

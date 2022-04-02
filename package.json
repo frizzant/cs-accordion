@@ -17,5 +17,8 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^22.3.0"
+	},
+	"dependencies": {
+		"accordion-js": "^3.2.0"
 	}
 }

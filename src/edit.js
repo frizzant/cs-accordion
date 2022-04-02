@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,10 +29,20 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes }) {
+	const { /** Your custom attributes **/ } = attributes;
+
+	const ALLOWED_BLOCKS = ['cs/accordion-inner'];
+	const TEMPLATE = [['cs/accordion-inner'], ['cs/accordion-inner'], ['cs/accordion-inner']];
+
 	return (
-		<p {...useBlockProps()}>
-			{__('CS Accordion Block – hello from the editor!', 'cs-accordion')}
-		</p>
+		<div {...useBlockProps()}>
+			<div className="wp-block-cs-accordion accordion-container">
+				<InnerBlocks
+					allowedBlocks={ALLOWED_BLOCKS}
+					template={TEMPLATE}
+				/>
+			</div>
+		</div>
 	);
 }
