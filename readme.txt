@@ -10,10 +10,7 @@ Shows content in an accordion.
 
 == Description ==
 
-This is the long description. No limit, and you can use Markdown (as well as in the following sections).
-
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+Gutenberg Block based on accordionJS ( https://github.com/michu2k/Accordion ) by Michu2k.
 
 == Installation ==
 

@@ -18,9 +18,11 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 export default function save(attributes) {
 	const {} = attributes;
 
+	const settings = {};
+
 	return (
 		<div {...useBlockProps.save()}>
-			<div className="wp-block-cs-accordion accordion-container">
+			<div className="wp-block-cs-accordion accordion-container" data-settings={settings}>
 				<InnerBlocks.Content/>
 			</div>
 		</div>

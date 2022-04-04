@@ -5,7 +5,8 @@
  */
 import {__} from '@wordpress/i18n';
 import {registerBlockType} from '@wordpress/blocks';
-import {InnerBlocks, RichText} from '@wordpress/block-editor';
+import {InnerBlocks, RichText, InspectorControls} from '@wordpress/block-editor';
+import {PanelBody, ToggleControl} from "@wordpress/components";
 
 /**
  * Every block starts by registering a new block type definition.
@@ -32,12 +33,16 @@ registerBlockType('cs/accordion-inner', {
 			source: 'html',
 			selector: '.ac-trigger',
 		},
+		isOpen: {
+			type: 'boolean',
+			default: false,
+		},
 	},
 	/**
 	 * @see ./edit.js
 	 */
 	edit: ({attributes, setAttributes}) => {
-		const { title } = attributes;
+		const {title, isOpen} = attributes;
 
 		/**
 		 * All blocks are allowed, and there is no template set.
@@ -49,7 +54,17 @@ registerBlockType('cs/accordion-inner', {
 		const ALLOWED_BLOCKS = true;
 		const TEMPLATE = true;
 
-		return (
+		return (<>
+			<InspectorControls>
+				<PanelBody title="Settings" initialOpen={isOpen}>
+					<ToggleControl
+						label={__('Open', 'cs-accordion')}
+						help={isOpen ? __('Yes') : __('No')}
+						checked={isOpen}
+						onChange={() => setAttributes({isOpen: !isOpen})}
+					/>
+				</PanelBody>
+			</InspectorControls>
 			<div className='wp-block-cs-accordion-inner ac'>
 				<h2 className="ac-header">
 					<RichText
@@ -69,29 +84,27 @@ registerBlockType('cs/accordion-inner', {
 					</div>
 				</div>
 			</div>
-		);
+		</>);
 	},
 	/**
 	 * @see ./save.js
 	 */
 	save: ({attributes}) => {
-		const { title } = attributes;
+		const {title, isOpen} = attributes;
 
-		return (
-			<div className='wp-block-cs-accordion-inner ac'>
-				<h2 className="ac-header">
-					<RichText.Content
-						tagName="span"
-						className="ac-trigger"
-						value={title}
-					/>
-				</h2>
-				<div className="ac-panel">
-					<div className="ac-text">
-						<InnerBlocks.Content/>
-					</div>
+		return (<div className='wp-block-cs-accordion-inner ac' data-accordion-inner-open={isOpen}>
+			<h2 className="ac-header">
+				<RichText.Content
+					tagName="span"
+					className="ac-trigger"
+					value={title}
+				/>
+			</h2>
+			<div className="ac-panel">
+				<div className="ac-text">
+					<InnerBlocks.Content/>
 				</div>
 			</div>
-		);
+		</div>);
 	},
 });
