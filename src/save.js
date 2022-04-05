@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import {useBlockProps, InnerBlocks} from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -15,14 +15,22 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save(attributes) {
-	const {} = attributes;
+export default function Save({attributes}) {
+	const {
+		duration,
+		collapse,
+		showMultiple,
+	} = attributes;
 
-	const settings = {};
+	const settings = JSON.stringify({
+		duration: duration,
+		collapse: collapse,
+		showMultiple: showMultiple,
+	});
 
 	return (
 		<div {...useBlockProps.save()}>
-			<div className="wp-block-cs-accordion accordion-container" data-settings={settings}>
+			<div className="accordion-container" data-settings={settings} >
 				<InnerBlocks.Content/>
 			</div>
 		</div>

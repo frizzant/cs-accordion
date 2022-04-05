@@ -44,19 +44,9 @@ registerBlockType('cs/accordion-inner', {
 	edit: ({attributes, setAttributes}) => {
 		const {title, isOpen} = attributes;
 
-		/**
-		 * All blocks are allowed, and there is no template set.
-		 *
-		 * @type {boolean} | {array}
-		 * ALLOWED_BLOCKS: https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/nested-blocks-inner-blocks/#allowed-blocks
-		 * TEMPLATE: https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/nested-blocks-inner-blocks/#template}
-		 */
-		const ALLOWED_BLOCKS = true;
-		const TEMPLATE = true;
-
 		return (<>
 			<InspectorControls>
-				<PanelBody title="Settings" initialOpen={isOpen}>
+				<PanelBody title="Settings" initialOpen={true}>
 					<ToggleControl
 						label={__('Open', 'cs-accordion')}
 						help={isOpen ? __('Yes') : __('No')}
@@ -78,8 +68,6 @@ registerBlockType('cs/accordion-inner', {
 				<div className="ac-panel">
 					<div className="ac-text">
 						<InnerBlocks
-							allowedBlocks={ALLOWED_BLOCKS}
-							template={TEMPLATE}
 						/>
 					</div>
 				</div>
@@ -92,19 +80,20 @@ registerBlockType('cs/accordion-inner', {
 	save: ({attributes}) => {
 		const {title, isOpen} = attributes;
 
-		return (<div className='wp-block-cs-accordion-inner ac' data-accordion-inner-open={isOpen}>
-			<h2 className="ac-header">
-				<RichText.Content
-					tagName="span"
-					className="ac-trigger"
-					value={title}
-				/>
-			</h2>
-			<div className="ac-panel">
-				<div className="ac-text">
-					<InnerBlocks.Content/>
+		return (
+			<div className='wp-block-cs-accordion-inner ac' data-accordion-inner-open={isOpen}>
+				<h2 className="ac-header">
+					<RichText.Content
+						tagName="span"
+						className="ac-trigger"
+						value={title}
+					/>
+				</h2>
+				<div className="ac-panel">
+					<div className="ac-text">
+						<InnerBlocks.Content/>
+					</div>
 				</div>
-			</div>
-		</div>);
+			</div>);
 	},
 });

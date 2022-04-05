@@ -12,7 +12,20 @@
 	"align": true,
 	"anchor": true
   },
-  "attributes": {},
+  "attributes": {
+	"duration": {
+	  "type": "number",
+	  "default": 600
+	},
+	"collapse": {
+	  "type": "boolean",
+	  "default": false
+	},
+	"showMultiple": {
+	  "type": "boolean",
+	  "default": false
+	}
+  },
   "textdomain": "cs-accordion",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
