@@ -6,6 +6,9 @@
 
 body.block-editor-page {
   .wp-block-cs-accordion {
-	/** TODO: Add Styles **/
+	.accordion-container {
+	  .wp-block-cs-accordion-inner {
+	  }
+	}
   }
 }
