@@ -14,7 +14,10 @@ Gutenberg Block based on accordionJS ( https://github.com/michu2k/Accordion ) by
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+This is not built, you will have to build it yourself with ``npm`` or ``yarn``.
+Simply run ``npm install`` and then ``npm build`` to compile the block. Now you can create a zip for uploading, or sync it to your
+development or production server.
+I recommend that you adjust the styling to your liking.
 
 e.g.
 
@@ -24,21 +27,19 @@ e.g.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Why should I use this block? =
+I set up this block to save you time. Accordions are great, especially when they are easy to configure and easy to use. Since this block is build fairly simply, it enables developer to start working on what really matters,
+in a few minutes.
 
-An answer to that question.
+= How do I change the settings? =
+The settings can be changed in the block editor. It provides all the usually used settings, but you can also add your own custom settings. This will require some React and Gutenberg knowledge however.
 
-= What about foo bar? =
+= How can I add events? =
+michu2k/Accordion provides a simple way to add events to the accordion. Just follow his guide, and add the JS to the ``frontend.js`` file.
 
-Answer to foo bar dilemma.
-
-== Screenshots ==
-
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+= How does this block work? =
+This block is build from two Gutenberg Blocks. The main accordion block, which wraps the inner accordion block elements. This is required, due to the nature of Gutenberg, and can not be solved with a single block at this time.
+This enables you to add "any" content to the accordion. This is a common workaround and not a hacky solution.
 
 == Changelog ==
 
